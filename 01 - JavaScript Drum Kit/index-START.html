@@ -59,31 +59,40 @@
 <script>
 
   // listen to key up event (not continuous), if key code matches
-  window.onkeydown = function(e) {
+  const playKey = function(e) {
      const keyCode = e.keyCode ? e.keyCode : e.which;
 
      // add class 'playing' to the div that matches
      // caveat: https://intuio.at/blog/dont-use-data-attributes-to-find-html-elements-with-js/
-     const el = "[data-key='" + keyCode + "']";
-     const divKey = document.querySelector("div" + el);
+     const el = `[data-key='${keyCode}']`;
+     const divKey = document.querySelector(`div${el}`);
      if (divKey) {
-      divKey.classList.add('playing');
+       divKey.classList.add('playing');
      }
+
      // play the sound that matches the keycode
-     const audioKey = document.querySelector("audio" + el);
+     const audioKey = document.querySelector(`audio${el}`);
      if (audioKey) {
+      // rewind audio file back to beginning
+      audioKey.currentTime = 0;
       audioKey.play();
      }     
   }
 
-  window.onkeyup = function(e) {
-    // clear out all keys
-    const divKeys = document.querySelectorAll(".playing");
-    for (const divKey of divKeys) {
-      divKey.classList.remove('playing');
+  // remove 'playing' class on transition end
+  const clearKey = function(e) {
+    if (e.propertyName !== 'transform') {
+      return;
     }
+    // e.target ==  element on which the event occurred
+    // e.currentTarget == element to which the event handler has been attached
+    e.target.classList.remove('playing');
   }
 
+  const keys = Array.from(document.querySelectorAll('div.key'));
+  keys.forEach(key => key.addEventListener('transitionend', clearKey));
+
+  window.addEventListener('keydown', playKey);
 </script>
 
 
