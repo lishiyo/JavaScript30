@@ -7,7 +7,6 @@
 </head>
 <body>
 
-
   <div class="keys">
     <div data-key="65" class="key">
       <kbd>A</kbd>
@@ -58,6 +57,32 @@
   <audio data-key="76" src="sounds/tink.wav"></audio>
 
 <script>
+
+  // listen to key up event (not continuous), if key code matches
+  window.onkeydown = function(e) {
+     const keyCode = e.keyCode ? e.keyCode : e.which;
+
+     // add class 'playing' to the div that matches
+     // caveat: https://intuio.at/blog/dont-use-data-attributes-to-find-html-elements-with-js/
+     const el = "[data-key='" + keyCode + "']";
+     const divKey = document.querySelector("div" + el);
+     if (divKey) {
+      divKey.classList.add('playing');
+     }
+     // play the sound that matches the keycode
+     const audioKey = document.querySelector("audio" + el);
+     if (audioKey) {
+      audioKey.play();
+     }     
+  }
+
+  window.onkeyup = function(e) {
+    // clear out all keys
+    const divKeys = document.querySelectorAll(".playing");
+    for (const divKey of divKeys) {
+      divKey.classList.remove('playing');
+    }
+  }
 
 </script>
 
