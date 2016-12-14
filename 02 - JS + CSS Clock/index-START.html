@@ -6,7 +6,7 @@
 </head>
 <body>
 
-
+    <button id="stop">STOP</button>
     <div class="clock">
       <div class="clock-face">
         <div class="hand hour-hand"></div>
@@ -14,7 +14,6 @@
         <div class="hand second-hand"></div>
       </div>
     </div>
-
 
   <style>
     html {
@@ -67,7 +66,51 @@
 
   <script>
 
+    let intervalId, hourHand, minHand, secHand, d, hours, min, sec;
+    let hoursDeg, minDeg, secDeg;
 
+    // tick every second
+    const tick = function tick() {
+      d = new Date();
+      hours = d.getHours(); // tick => 1 / 24
+      min = d.getMinutes(); // tick =>  1 / 60
+      sec = d.getSeconds(); // tick => 1 / 60
+
+      // convert current time to degrees
+      hoursDeg = (hours / 24) * (360);
+      minDeg = (min / 60) * (360);
+      secDeg = (sec / 60) * (360);
+
+      // rotate each hand
+      rotateHand(hourHand, hoursDeg);
+      rotateHand(minHand, minDeg);
+      rotateHand(secHand, secDeg);
+    };
+
+    function rotateHand(hand, deg) {
+      deg += 90;
+      hand.style.transform = `rotate(${deg}deg)`;
+    }
+
+    const startTimer = function startTimer() {
+      let intervalId;
+
+      // set up the hands' transforms
+      hourHand = document.querySelector('.hour-hand');
+      minHand = document.querySelector('.min-hand');
+      secHand = document.querySelector('.second-hand');
+      Array.from(document.querySelectorAll('.hand')).forEach(hand => hand.style.transformOrigin = "100% 50% 0");
+
+      // stop on button click
+      document.getElementById('stop').addEventListener('click', function() {
+        clearInterval(intervalId);
+      });
+
+      // tick every second
+      intervalId = setInterval(tick, 1000);
+    };
+
+    window.addEventListener("load", startTimer)
   </script>
 </body>
 </html>
