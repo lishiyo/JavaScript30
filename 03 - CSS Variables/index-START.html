@@ -71,6 +71,7 @@
     function handleUpdate() {
       // dataset is custom obj that contains all the 'data-' attrs
       const suffix = this.dataset.sizing || '';
+      // select entire document 
       document.documentElement.style.setProperty(`--${this.name}`, this.value + suffix);
     }
 
