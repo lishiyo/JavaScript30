@@ -33,28 +33,84 @@
 
     // Array.prototype.filter()
     // 1. Filter the list of inventors for those who were born in the 1500's
+    const filtered = inventors.filter((inventor) => inventor.year >= 1500 && inventor.year < 1600);
 
     // Array.prototype.map()
     // 2. Give us an array of the inventors' first and last names
+    const mapped = inventors.map((inventor) => `${inventor.first} ${inventor.last}`);
 
     // Array.prototype.sort()
     // 3. Sort the inventors by birthdate, oldest to youngest
+    const sortedByBirth = inventors.sort((a, b) => a.year - b.year);
 
     // Array.prototype.reduce()
     // 4. How many years did all the inventors live?
+    const totalYears = inventors.reduce((accum, currEl, currIndex) => {
+      return accum + (currEl.passed - currEl.year);
+    }, 0);
 
     // 5. Sort the inventors by years lived
+    const sortedByLifespan = inventors.sort((a, b) => (a.passed - a.year) - (b.passed - b.year));
 
     // 6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
-    // https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
+    const boulevardsWithDe = function(nestedArray) {
+      return nestedArray.reduce((accum, currArr, currIndex) => {
+        // currArr = ['boulA', 'boulB']
+        currArr.forEach((el) => {
+          if (accum.indexOf(el) === -1 && el.toLowerCase().indexOf('de') !== -1) {
+            accum = accum.concat(el)
+          }
+        });
+        return accum;
+      }, []);
+    };
 
+    const URL = "https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris";
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', URL);
+    xhr.responseType = 'document';
+    xhr.setRequestHeader( 'Api-User-Agent', 'DemoTool/1.1' );
+    xhr.setRequestHeader('Access-Control-Allow-Origin', '*');
+    xhr.onreadystatechange = function() {
+      var DONE = 4; // readyState 4 means the request is done.
+      var OK = 200; // status 200 is a successful return.
+      if (xhr.readyState === DONE) {
+        if (xhr.status === OK) {
+          let bodyText = xhr.responseXML.documentElement;
+          let categoryDivs = bodyText.getElementsByClassName('mw-category-group'); // divs
+          let anchorTitles = Array.from(categoryDivs).map((div) => {
+            const anchors = div.getElementsByTagName('a');
+            return Array.from(anchors).map(anchor => anchor.innerText);
+          });
+          let boulevards = boulevardsWithDe(anchorTitles);
+          console.log(boulevards);
+
+        } else {
+          console.log('Error: ' + xhr.status); // An error occurred during the request.
+        }
+      }
+    };
+    xhr.send();
 
     // 7. sort Exercise
     // Sort the people alphabetically by last name
+    const sortedByLastName = people.sort((a, b) => {
+      const lastNameA = a.split(",")[0].trim();
+      const lastNameB = b.split(",")[0].trim();
+      if (lastNameA == lastNameB) return 0;
+      return lastNameA < lastNameB ? -1 : 1;
+    });
 
     // 8. Reduce Exercise
     // Sum up the instances of each of these
     const data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck' ];
+    const sumInstances = data.reduce((map, currEl, currIndex) => {
+      // { car: 5, truck: 3 }
+      map.set(currEl, map.has(currEl) ? map.get(currEl) + 1 : 1);
+      return map;
+    }, new Map());
+
+    console.log(totalYears, sortedByLifespan, sortedByLastName, sumInstances);
 
   </script>
 </body>

@@ -1,0 +1,65 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+addItem	15 - LocalStorage/index-FINISHED.html	/^  function addItem(e) {$/;"	f
+bonk	30 - Whack A Mole/index-FINISHED.html	/^  function bonk(e) {$/;"	f
+checkSlide	13 - Slide in on Scroll/index-FINISHED.html	/^    function checkSlide(e) {$/;"	f
+checkSlide	13 - Slide in on Scroll/index-START.html	/^    function checkSlide(e) {$/;"	f
+debounce	13 - Slide in on Scroll/index-FINISHED.html	/^    function debounce(func, wait = 20, immediate = true) {$/;"	f
+debounce	13 - Slide in on Scroll/index-START.html	/^    function debounce(func, wait = 20, immediate = true) {$/;"	f
+displayEndTime	29 - Countdown Timer/scripts-FINISHED.js	/^function displayEndTime(timestamp) {$/;"	f
+displayMatches	06 - Type Ahead/index-FINISHED.html	/^function displayMatches() {$/;"	f
+displayTimeLeft	29 - Countdown Timer/scripts-FINISHED.js	/^function displayTimeLeft(seconds) {$/;"	f
+draw	08 - Fun with HTML5 Canvas/index-FINISHED.html	/^function draw(e) {$/;"	f
+findMatches	06 - Type Ahead/index-FINISHED.html	/^function findMatches(wordToMatch, cities) {$/;"	f
+fixNav	24 - Sticky Nav/index-FINISHED.html	/^    function fixNav() {$/;"	f
+fixNav	24 - Sticky Nav/index-START.html	/^  function fixNav() {$/;"	f
+getVideo	19 - Webcam Fun/scripts-FINISHED.js	/^function getVideo() {$/;"	f
+greenScreen	19 - Webcam Fun/scripts-FINISHED.js	/^function greenScreen(pixels) {$/;"	f
+handleCheck	10 - Hold Shift and Check Checkboxes/index-FINISHED.html	/^function handleCheck(e) {$/;"	f
+handleEnter	26 - Stripe Follow Along Nav/index-FINISHED.html	/^  function handleEnter() {$/;"	f
+handleLeave	26 - Stripe Follow Along Nav/index-FINISHED.html	/^  function handleLeave() {$/;"	f
+handleMove	28 - Video Speed Controller/index-FINISHED.html	/^  function handleMove(e) {$/;"	f
+handleProgress	11 - Custom Video Player/scripts-FINISHED.js	/^function handleProgress() {$/;"	f
+handleRangeUpdate	11 - Custom Video Player/scripts-FINISHED.js	/^function handleRangeUpdate() {$/;"	f
+handleUpdate	03 - CSS Variables/index-FINISHED.html	/^    function handleUpdate() {$/;"	f
+handleUpdate	03 - CSS Variables/index-START.html	/^    function handleUpdate() {$/;"	f
+highlightLink	22 - Follow Along Link Highlighter/index-FINISHED.html	/^  function highlightLink() {$/;"	f
+logText	25 - Event Capture, Propagation, Bubbling and Once/index-FINISHED.html	/^  function logText(e) {$/;"	f
+makeGreen	09 - Dev Tools Domination/index-FINISHED.html	/^    function makeGreen() {$/;"	f
+makeGreen	09 - Dev Tools Domination/index-START.html	/^    function makeGreen() {$/;"	f
+numberWithCommas	06 - Type Ahead/index-FINISHED.html	/^function numberWithCommas(x) {$/;"	f
+paintToCanavas	19 - Webcam Fun/scripts-FINISHED.js	/^function paintToCanavas() {$/;"	f
+peep	30 - Whack A Mole/index-FINISHED.html	/^  function peep() {$/;"	f
+playSound	01 - JavaScript Drum Kit/index-FINISHED.html	/^  function playSound(e) {$/;"	f
+playSound	01 - JavaScript Drum Kit/index.html	/^  function playSound(e) {$/;"	f
+populateList	15 - LocalStorage/index-FINISHED.html	/^  function populateList(plates = [], platesList) {$/;"	f
+populateVoices	23 - Speech Synthesis/index-FINISHED.html	/^  function populateVoices() {$/;"	f
+randomHole	30 - Whack A Mole/index-FINISHED.html	/^  function randomHole(holes) {$/;"	f
+randomTime	30 - Whack A Mole/index-FINISHED.html	/^  function randomTime(min, max) {$/;"	f
+redEffect	19 - Webcam Fun/scripts-FINISHED.js	/^function redEffect(pixels) {$/;"	f
+removeTransition	01 - JavaScript Drum Kit/index-FINISHED.html	/^  function removeTransition(e) {$/;"	f
+removeTransition	01 - JavaScript Drum Kit/index.html	/^  function removeTransition(e) {$/;"	f
+rgbSplit	19 - Webcam Fun/scripts-FINISHED.js	/^function rgbSplit(pixels) {$/;"	f
+rotateHand	02 - JS + CSS Clock/index-START.html	/^    function rotateHand(hand, deg) {$/;"	f
+scrub	11 - Custom Video Player/scripts-FINISHED.js	/^function scrub(e) {$/;"	f
+setDate	02 - JS + CSS Clock/index-FINISHED.html	/^  function setDate() {$/;"	f
+setDate	02 - JS + CSS Clock/index.html	/^  function setDate() {$/;"	f
+setOption	23 - Speech Synthesis/index-FINISHED.html	/^  function setOption() {$/;"	f
+setVoice	23 - Speech Synthesis/index-FINISHED.html	/^  function setVoice() {$/;"	f
+shadow	16 - Mouse Move Shadow/index-finished.html	/^  function shadow(e) {$/;"	f
+skip	11 - Custom Video Player/scripts-FINISHED.js	/^function skip() {$/;"	f
+startGame	30 - Whack A Mole/index-FINISHED.html	/^  function startGame() {$/;"	f
+startTimer	29 - Countdown Timer/scripts-FINISHED.js	/^function startTimer() {$/;"	f
+strip	17 - Sort Without Articles/index-FINISHED.html	/^function strip(bandName) {$/;"	f
+takePhoto	19 - Webcam Fun/scripts-FINISHED.js	/^function takePhoto() {$/;"	f
+timer	29 - Countdown Timer/scripts-FINISHED.js	/^function timer(seconds) {$/;"	f
+toggle	23 - Speech Synthesis/index-FINISHED.html	/^  function toggle(startOver = true) {$/;"	f
+toggleActive	05 - Flex Panel Gallery/index-FINISHED.html	/^    function toggleActive(e) {$/;"	f
+toggleDone	15 - LocalStorage/index-FINISHED.html	/^  function toggleDone(e) {$/;"	f
+toggleOpen	05 - Flex Panel Gallery/index-FINISHED.html	/^    function toggleOpen() {$/;"	f
+togglePlay	11 - Custom Video Player/scripts-FINISHED.js	/^function togglePlay() {$/;"	f
+updateButton	11 - Custom Video Player/scripts-FINISHED.js	/^function updateButton() {$/;"	f
