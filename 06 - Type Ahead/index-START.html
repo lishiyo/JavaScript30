@@ -15,7 +15,78 @@
     </ul>
   </form>
 <script>
-const endpoint = 'https://gist.githubusercontent.com/Miserlou/c5cd8364bf9b2420bb29/raw/2bf258763cdddd704f8ffd3ea9a3e81d25e2c6f6/cities.json';
+  const endpoint = 'https://gist.githubusercontent.com/Miserlou/c5cd8364bf9b2420bb29/raw/2bf258763cdddd704f8ffd3ea9a3e81d25e2c6f6/cities.json';
+
+  const searchInput = document.querySelector('.search');
+  const suggestions = document.querySelector('.suggestions');
+
+  // fetch API: https://davidwalsh.name/fetch
+  // fetch returns promise
+  const fetchCitiesPromise = function fetchCitiesPromise(url) {
+    return fetch(url).then((resp) => resp.json());
+  }
+
+  // https://hackernoon.com/async-await-warm-up-229676224319#.ulgfj7ei2
+  // `await` MUST be inside async closure
+  const fetchCitiesAsync = async function fetchCitiesAsync(url) {
+    return await fetchCitiesPromise(url);
+  }
+
+  /* @return the case-insensitive cities that match in either city or state */
+  const searchCities = function searchCities(val, cities) {
+    return cities.filter((place) => {
+      const regex = new RegExp(val, 'gi');
+      return place.city.match(regex) || place.state.match(regex);
+    })
+  }
+
+  // Turn results array into html to attach to display.
+  // @return hte html to attach
+  const displayMatches = function(currentInput, cities) {
+    // if lambda form = wrong `this` (doesn't create own lexical scope)
+    const matchArray = searchCities(currentInput, cities);
+
+    const html = matchArray.map(place => {
+      const regex = new RegExp(currentInput, 'gi');
+      const cityName = place.city.replace(regex, `<span class="hl">${currentInput}</span>`);
+      const stateName = place.state.replace(regex, `<span class="hl">${currentInput}</span>`);
+      const numberWithCommas = (x) => {
+        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+      }
+      return `
+        <li>
+          <span class="name">${cityName}, ${stateName}</span>
+          <span class="population">${numberWithCommas(place.population)}</span>
+        </li>
+      `;
+    }).join('');
+
+    return html;
+  }
+
+  const init = function init(inputDiv, outputDiv) {
+    // NEW: async/await
+    fetchCitiesAsync(endpoint)
+      .then((places) => {
+        const runSearch = function() {
+          outputDiv.innerHTML = displayMatches(this.value, places);
+        }
+
+        inputDiv.addEventListener('keyup', runSearch.bind(inputDiv));
+        inputDiv.addEventListener('change', runSearch.bind(inputDiv));
+      });
+
+    // OLD: callbacks
+    // fetchCities(endpoint, (data) => {
+    //   const cities = data;
+    //
+    //   // attach listener after populated
+    //   inputDiv.addEventListener('keyup', displayMatches.bind(inputDiv, cities, outputDiv));
+    //   inputDiv.addEventListener('change', displayMatches.bind(inputDiv, cities, outputDiv));
+    // });
+  }
+
+  window.addEventListener("load", init.bind(this, searchInput, suggestions));
 
 </script>
   </body>
