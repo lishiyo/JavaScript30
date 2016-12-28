@@ -27,14 +27,25 @@
     // Some and Every Checks
     // Array.prototype.some() // is at least one person 19?
     // Array.prototype.every() // is everyone 19?
+    const over19 = (el) => (new Date().getFullYear() - el.year) >= 19;
+    const isAtLeastOneNineteen = people.some(over19);
+    const isEveryNineteen = people.every(over19);
 
     // Array.prototype.find()
     // Find is like filter, but instead returns just the one you are looking for
     // find the comment with the ID of 823423
+    const commentWithId = comments.find((el, idx, arr) => el.id === 823423);
 
     // Array.prototype.findIndex()
     // Find the comment with this ID
     // delete the comment with the ID of 823423
+    const idx = comments.findIndex((el, idx, arr) => el.id === 823423);
+    // slice vs splice - former is not mutative
+    const newComments = [
+      ...comments.slice(0, idx -1),
+      ...comments.slice(idx)
+    ];
+    console.log(isAtLeastOneNineteen, isEveryNineteen, commentWithId, newComments);
 
   </script>
 </body>
