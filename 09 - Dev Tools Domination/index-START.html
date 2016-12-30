@@ -17,29 +17,67 @@
       p.style.fontSize = '50px';
     }
 
+    // Inspect the <p> => Break on -> attribute modifications
+
     // Regular
+    console.log('hello');
 
     // Interpolated
+    console.log('hello I am a %s string!', 'funny');
+    const funny = 'funny';
+    console.log(`hello I am a ${funny} string!`);
 
     // Styled
+    console.log('%c I am some great text', 'font-size: 40px; background: red; text-shadow: 10px 10px 0 blue');
 
     // warning!
+    console.warn('OH NOOOoo'); // gives us stacktrace
 
     // Error :|
+    console.error('oh shit!');
 
     // Info
+    console.info('Crocodiles eat 3-4 people per year');
 
     // Testing
+    console.assert(1 === 1, 'This is true so won\'t run');
+    console.assert(1 === 2, 'This is false!');
 
     // clearing
+    console.clear(); // clear everything above
 
     // Viewing DOM Elements
+    const p = document.querySelector('p');
+    console.log(p);
+    console.dir(p); // all the methods on p
 
     // Grouping together
+    dogs.forEach(dog => {
+      console.groupCollapsed(`${dog.name}`);
+      console.log(`This is ${dog.name}`);
+      console.log(`${dog.name} is ${dog.age} years old`);
+      console.log(`${dog.name} is ${dog.age * 7} dog years old`);
+      console.groupEnd(`${dog.name}`);
+    });
 
     // counting
+    console.count('Wes');
+    console.count('Wes');
+    console.count('Wes');
 
     // timing
+    // also https://developer.mozilla.org/en-US/docs/Web/API/Performance/now
+    const label = 'fetching data';
+    console.time(label);
+    fetch('https://api.github.com/users/lishiyo')
+    .then(data => data.json())
+    .then(data => {
+      console.timeEnd(label)
+      console.log(data);
+    });
+
+    // array of objects can be made a table
+    console.table(dogs);
 
   </script>
 </body>
