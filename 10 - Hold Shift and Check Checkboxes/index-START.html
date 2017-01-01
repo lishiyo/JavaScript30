@@ -104,6 +104,48 @@
   </div>
 
 <script>
+  let startCheckbox = null; // last clicked checkbox
+  let endCheckbox = null;
+  const checkboxes = document.querySelectorAll('.item input');
+
+  checkboxes.forEach((checkbox, idx) => {
+    checkbox.addEventListener('click', function (e) {
+      if (e.shiftKey) {
+        // if (startCheckbox == null) {
+        //   startCheckbox = idx;
+        // } else {
+        //   endCheckbox = idx;
+        // }
+
+        let highestChecked = findHighestChecked(checkboxes);
+        // must be above current idx
+        checkAllInRange(checkboxes, highestChecked, idx);
+      } else {
+        // startCheckbox = null;
+        // endCheckbox = null;
+      }
+
+      console.log(e.shiftKey, idx, highestChecked, startCheckbox, endCheckbox);
+    });
+
+  });
+
+  function findHighestChecked(checkboxes) {
+    const checked = document.querySelectorAll('.item input:checked');
+    return checked.length ? Array.from(checkboxes).indexOf(checked[0]) : null;
+  }
+
+  function checkAllInRange(checkboxes, startIdx, endIdx) {
+    console.log("checkAll! from highest to idx: ", startIdx, endIdx);
+    if (startIdx != null && endIdx != null && startIdx < endIdx) {
+      let currIdx = startIdx + 1;
+      while (currIdx < endIdx) {
+        checkboxes[currIdx].checked = true;
+        currIdx++;
+      }
+    }
+  }
+
 </script>
 </body>
 </html>
